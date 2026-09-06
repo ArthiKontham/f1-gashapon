@@ -4,7 +4,7 @@ An F1-style racing game built with React, Vite, and Phaser. The game features mu
 
 ## Preview
 
-![F1 Race Game](preview.png)
+![F1 Race Game](F1 Cars Gashapon Machine Thumbnail.png)
 
 ## Live Demo
 
