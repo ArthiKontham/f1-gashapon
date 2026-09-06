@@ -1,10 +1,10 @@
-# F1 Race Game
+# F1-gashapon
 
 An F1-style racing game built with React, Vite, and Phaser. The game features multiple racing circuits, two-player racing, keyboard controls, race countdowns, laps, checkpoints, collisions, engine and crash sounds, pause and restart options, and race result screens.
 
 ## Preview
 
-![F1 Race Game](F1 Cars Gashapon Machine Thumbnail.png)
+![F1 Race Game](Preview.png)
 
 ## Live Demo
 
