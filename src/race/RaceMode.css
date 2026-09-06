@@ -1,0 +1,436 @@
+.race-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 12000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 2vw;
+  box-sizing: border-box;
+}
+
+.race-modal {
+  width: min(95vw, 1300px);
+  height: min(92vh, 900px);
+  background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+  border-radius: clamp(14px, 2vw, 24px);
+  border: 4px solid #ff3c3c;
+  box-shadow:
+    0 0 40px rgba(255, 60, 60, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  position: relative;
+  padding: clamp(16px, 2vw, 30px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.race-modal h1 {
+  text-align: center;
+  color: white;
+  font-size: clamp(22px, 3vw, 42px);
+  margin: 0 0 clamp(16px, 2vw, 30px) 0;
+  font-weight: 900;
+  padding-right: 50px;
+  padding-left: 50px;
+  flex-shrink: 0;
+}
+
+.race-close-btn {
+  position: absolute;
+  top: clamp(12px, 1.5vw, 20px);
+  right: clamp(12px, 1.5vw, 20px);
+  width: clamp(34px, 3vw, 42px);
+  height: clamp(34px, 3vw, 42px);
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  font-size: clamp(16px, 1.8vw, 22px);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.race-close-btn:hover {
+  transform: scale(1.08);
+}
+
+.car-selection-container {
+  display: flex;
+  gap: clamp(12px, 2vw, 30px);
+  flex: 1;
+  min-height: 0;
+}
+
+.player-section {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: clamp(12px, 1.5vw, 20px);
+  padding: clamp(12px, 1.5vw, 20px);
+  overflow-y: auto;
+  min-width: 0;
+}
+
+.player-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.player-section::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.player-section h2 {
+  color: #ff4d4d;
+  text-align: center;
+  font-size: clamp(18px, 2vw, 28px);
+  margin-bottom: 8px;
+}
+
+.player-section p {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: clamp(12px, 1.2vw, 16px);
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(10px, 1.5vw, 16px);
+}
+
+.car-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid transparent;
+  border-radius: clamp(10px, 1vw, 16px);
+  padding: clamp(8px, 1vw, 12px);
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.car-card:hover {
+  transform: scale(1.03);
+  border-color: #ff4d4d;
+}
+
+.car-card.selected {
+  border-color: #00ff88;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+.car-card img {
+  width: 100%;
+  height: clamp(60px, 8vw, 90px);
+  object-fit: contain;
+}
+
+.car-card span {
+  display: block;
+  color: white;
+  margin-top: 10px;
+  font-size: clamp(11px, 1vw, 13px);
+  word-break: break-word;
+}
+
+@media screen and (max-width: 900px) {
+  .car-selection-container {
+    gap: 12px;
+  }
+  .car-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .race-modal {
+    width: 96vw;
+    height: 94vh;
+  }
+  .car-selection-container {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .player-section {
+    min-height: 300px;
+  }
+  .car-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  .car-card {
+    min-height: 120px;
+  }
+}
+
+.continue-btn,
+.start-race-btn {
+  margin: 20px auto 0;
+  display: block;
+  background: linear-gradient(180deg, #ff4d4d, #b30000);
+  border: 3px solid white;
+  color: white;
+  padding: clamp(10px, 1vw, 16px) clamp(18px, 2vw, 30px);
+  border-radius: 16px;
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);
+}
+
+.track-selection-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  min-width: 0;
+  padding-top: 20px;
+}
+
+.track-selection-container h2 {
+  color: white;
+  text-align: center;
+  font-size: clamp(22px, 3vw, 38px);
+  margin-bottom: 30px;
+}
+
+.track-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  align-items: center;
+}
+
+.lap-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20000;
+}
+
+.lap-modal {
+  width: 500px;
+  max-width: 90vw;
+  background: #151515;
+  border: 3px solid #ff3c3c;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+}
+
+.lap-modal h2 {
+  color: white;
+  margin-bottom: 25px;
+}
+
+.lap-modal input {
+  width: 200px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.car-card.disabled {
+  opacity: 0.22 !important;
+  filter: grayscale(100%) brightness(0.45) !important;
+  pointer-events: none;
+  transform: none !important;
+  box-shadow: none !important;
+  border: 2px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.car-card.disabled img {
+  opacity: 0.25;
+  filter: grayscale(100%) brightness(0.45);
+}
+
+.car-card.disabled span {
+  opacity: 0.35;
+}
+
+.player-name-input {
+  width: 220px;
+  padding: 12px 16px;
+  margin: 14px 0 20px 0;
+  background: #000000;
+  border: 2px solid #ff3b30;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 59, 48, 0.35);
+}
+
+.player-name-input::placeholder {
+  color: #bbbbbb;
+}
+
+.player-name-input:focus,
+.player-name-input:not(:placeholder-shown) {
+  border: 2px solid #00ff66;
+  box-shadow: 0 0 12px rgba(0, 255, 102, 0.45);
+}
+
+.track-card {
+  width: 100%;
+  max-width: 1150px;
+  height: 240px;
+  border: 2px solid #ff5a4d;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+  gap: 50px;
+  background: rgba(20, 20, 20, 0.85);
+  transition: 0.3s ease;
+}
+
+@media (max-width: 1100px) {
+  .track-card {
+    height: 210px;
+    gap: 30px;
+    padding: 20px;
+  }
+  .track-image {
+    width: 300px;
+    height: 150px;
+  }
+  .track-info h3 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 850px) {
+  .track-card {
+    height: 180px;
+    gap: 20px;
+  }
+  .track-image {
+    width: 240px;
+    height: 120px;
+  }
+  .track-info h3 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 650px) {
+  .track-card {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    gap: 15px;
+    text-align: center;
+  }
+  .track-image {
+    width: 100%;
+    max-width: 280px;
+    height: 140px;
+  }
+  .track-info h3 {
+    font-size: 28px;
+  }
+}
+
+.track-card:hover {
+  transform: scale(1.01);
+}
+
+.track-card.selected {
+  border-color: #66ff44;
+  box-shadow: 0 0 20px rgba(102, 255, 68, 0.35);
+}
+
+.track-image {
+  width: 380px;
+  height: 180px;
+  flex-shrink: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.track-info h3 {
+  color: white;
+  font-size: 48px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.track-info p {
+  color: #d0d0d0;
+  font-size: 20px;
+  margin-top: 14px;
+}
+.race-back-btn {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding-top: -8px;
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.race-back-btn:hover {
+  transform: scale(1.08);
+  border-color: #ff5a36;
+  box-shadow: 0 0 12px rgba(255, 90, 54, 0.7);
+}
+
+.track-selection-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.track-selection-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.track-selection-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.track-selection-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}

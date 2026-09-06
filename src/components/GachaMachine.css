@@ -1,0 +1,111 @@
+.machine {
+  width: min(90vw, 520px);
+  height: min(95vh, 780px);
+  background: #f4b7cb;
+  border: 6px solid black;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.glass {
+  flex: 1;
+  background: #f4c88b;
+  border: 5px solid black;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.box-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  inset: 0;
+}
+
+.mini-box {
+  position: absolute;
+  width: 184px;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.bottom-section {
+  height: 220px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+}
+
+.falling-prize {
+  position: absolute;
+  width: 165px;
+  pointer-events: none;
+  z-index: 20;
+  animation: prizeDrop 0.9s ease-in forwards;
+}
+
+.falling-prize {
+  position: absolute;
+  width: 165px;
+  pointer-events: none;
+  z-index: 50;
+  transform-origin: center;
+  animation: realDrop 0.9s ease-in forwards;
+}
+
+@keyframes realDrop {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform:
+      translate(-50%, calc(-50% + 260px))
+      rotate(90deg);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .collection-btn-container {
+    left: auto;
+    right: 20px;
+    top: 20px;
+  }
+}
+
+.top-buttons {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 100;
+}
+
+.race-mode-btn {
+ background: #ffb6cf;
+  border: 4px solid black;
+  border-radius: 14px;
+  padding: 10px 18px;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 50;
+  box-shadow: 0 4px 0 black;
+}
+
+.race-mode-btn:hover {
+  transform: translateY(2px);
+}
